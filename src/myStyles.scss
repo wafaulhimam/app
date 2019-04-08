@@ -1,0 +1,16 @@
+body {
+    background-color: rgb(235, 135, 197);
+    color: black;
+}
+
+.app {
+    width: 450px;
+    margin: 0 auto;
+    padding-top: 50px;
+
+    &.app-header {
+        height: 250px;
+        width: inherit;
+        object-fit: cover;
+    }
+}
