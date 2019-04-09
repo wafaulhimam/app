@@ -11,6 +11,9 @@ class App extends React.Component {
 
   componentDidMount() {
     this.onGetKirkBio();
+    import(/* webpackChunkName: 'Foo' */ './Foo').then(Foo => {
+      this.setState({ Foo: Foo.default });
+    });
   }
 
   onGetKirkBio = async () => {
@@ -34,14 +37,14 @@ class App extends React.Component {
   };
 
   render() {
-    const { CaptainKirkBio } = this.state;
+    const { CaptainKirkBio, Foo } = this.state;
     return (
       <div className="app">
         <img alt="header" src="/dist/images/header.jpg" className="app-header" />
         <p>
           We are a most promising species, Mr. Spock, as predators go. Did you know that? I
-          frequently have my doubts. I dont. Not any more. And maybe in a thousand years or so, we
-          will be able to prove it.
+          frequently have my doubts. I dont. Not any more. And maybe in a thousand years or so will
+          be able to prove it.
         </p>
         <p>- Captain Kirk</p>
         <section>
@@ -51,6 +54,7 @@ class App extends React.Component {
             <p style={{ wordBreak: 'break-all' }}>{JSON.stringify(CaptainKirkBio)}</p>
           )}
         </section>
+        {Foo ? <Foo /> : <p>Foo is loading</p>}
       </div>
     );
   }
